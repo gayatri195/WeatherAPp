@@ -5,7 +5,7 @@ import moment from 'moment-timezone'
 
 const CurrentTemp = ({data})=>{
     if(data && data.weather){
-        const img = {uri:'https://www.seekpng.com/png/full/56-566829_rain-clipart-gloomy-weather-partly-cloudy-clipart-transparent.png'}
+        const img = {uri: "http://openweathermap.org/img/wn/"+forecastItem.weather[0].icon+"@2x.png"}
         return(
             <View style={styles.currentTempContainer}>
                 <Image source={img} style={styles.image}/>
