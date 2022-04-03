@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {View, Text, StyleSheet} from 'react-native';
-import moment from 'moment-timezone'
+import {View, Text, StyleSheet, TextInput} from 'react-native';
+import moment from 'moment-timezone';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -52,9 +52,14 @@ const DateTime = ({current, lat, lon, timezone}) => {
                     <WeatherItem title="Sunset" value={current? moment.tz(current.sunset * 1000, timezone ).format('HH:mm') : ""} unit="pm"/>
                </View>
            </View>
-           <View style={styles.rightAlign}>
-               <Text style={styles.timezone}>{timezone}</Text>
-               <Text style={styles.latlong}>{lat}N {lon}E</Text>
+           <View>
+            <View style={styles.rightAlign}>
+                <Text style={styles.timezone}>{timezone}</Text>
+                <Text style={styles.latlong}>{lat}N {lon}E</Text>
+            </View>
+            <View style={styles.textInputContainer}>
+                <TextInput placeholder='Enter a city name...' style={styles.textInputText}/>
+            </View>
            </View>
         </View>
     )
@@ -69,12 +74,12 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 45,
-        color:'white',
-        fontWeight: '100'
+        color:'black',
+        fontWeight: '400'
     },
     subheading: {
         fontSize: 25,
-        color: '#eee',
+        color: 'black',
         fontWeight: '300'
     },
     rightAlign: {
@@ -83,11 +88,11 @@ const styles = StyleSheet.create({
     },
     timezone: {
         fontSize: 20,
-        color:'white'
+        color:'black'
     },
     latlong:{
         fontSize:16,
-        color:'white',
+        color:'black',
         fontWeight: '700'
     },
     weatherItemContainer: {
@@ -104,6 +109,18 @@ const styles = StyleSheet.create({
         color:'#eee',
         fontSize: 14,
         fontWeight: '100'
+    },
+    textInputContainer:{
+        borderBottomColor:'lightblue',
+        backgroundColor:'white',
+        borderRadius:10,
+        padding:2,
+        marginTop:35,
+        marginRight:10,
+        marginLeft:5
+    },
+    textInputText:{
+        fontSize:12
     }
 })
 
